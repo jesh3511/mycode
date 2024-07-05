@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 #question bank
 question = [
     {"I...   ":"(Enter 1 to continue)"},
@@ -55,70 +56,70 @@ question = [
 ]
 #display the input prompt
 print("For the following questions, answer on a scale from 1 to 5. \n1=Disagree\n2=Slightly Disagree\n3=Neutral\n4=Slightly agree\n5=Agree")
-#print("\nI...\n")
 
 #display the question and register input
-
-while True:
-    for value in question:
-        i=input(value)
-        value["response"]=int(i)
-    if i >=1 and i <=5:
-        break
-    else:
-        print("=====Error: answer must be entered as a number 1-5===== \n")
-
+for value in question:
+    #k=list(value.keys())[0]
+    #print("this is",k)
+    #v=list(value.get(k))
+    #print("this is",v)
+    #i=input(f"{k}.{v}")
+    i=input(value)
+    while int(i) <1 or int(i) > 5:
+        i=input("\n====== Error:Please re-enter a number 1-5. ====== \n")
+    value["response"]=i
+    
 #variables for each question
-a1=question[1].get('response')
-a2=question[2].get('response')
-a3=question[3].get('response')
-a4=question[4].get('response')
-a5=question[5].get('response')
-a6=question[6].get('response')
-a7=question[7].get('response')
-a8=question[8].get('response')
-a9=question[9].get('response')
-a10=question[10].get('response')
-a11=question[11].get('response')
-a12=question[12].get('response')
-a13=question[13].get('response')
-a14=question[14].get('response')
-a15=question[15].get('response')
-a16=question[16].get('response')
-a17=question[17].get('response')
-a18=question[18].get('response')
-a19=question[19].get('response')
-a20=question[20].get('response')
-a21=question[21].get('response')
-a22=question[22].get('response')
-a23=question[23].get('response')
-a24=question[24].get('response')
-a25=question[25].get('response')
-a26=question[26].get('response')
-a27=question[27].get('response')
-a28=question[28].get('response')
-a29=question[29].get('response')
-a30=question[30].get('response')
-a31=question[31].get('response')
-a32=question[32].get('response')
-a33=question[33].get('response')
-a34=question[34].get('response')
-a35=question[35].get('response')
-a36=question[36].get('response')
-a37=question[37].get('response')
-a38=question[38].get('response')
-a39=question[39].get('response')
-a40=question[40].get('response')
-a41=question[41].get('response')
-a42=question[42].get('response')
-a43=question[43].get('response')
-a44=question[44].get('response')
-a45=question[45].get('response')
-a46=question[46].get('response')
-a47=question[47].get('response')
-a48=question[48].get('response')
-a49=question[49].get('response')
-a50=question[50].get('response')
+a1=int(question[1].get('response'))
+a2=int(question[2].get('response'))
+a3=int(question[3].get('response'))
+a4=int(question[4].get('response'))
+a5=int(question[5].get('response'))
+a6=int(question[6].get('response'))
+a7=int(question[7].get('response'))
+a8=int(question[8].get('response'))
+a9=int(question[9].get('response'))
+a10=int(question[10].get('response'))
+a11=int(question[11].get('response'))
+a12=int(question[12].get('response'))
+a13=int(question[13].get('response'))
+a14=int(question[14].get('response'))
+a15=int(question[15].get('response'))
+a16=int(question[16].get('response'))
+a17=int(question[17].get('response'))
+a18=int(question[18].get('response'))
+a19=int(question[19].get('response'))
+a20=int(question[20].get('response'))
+a21=int(question[21].get('response'))
+a22=int(question[22].get('response'))
+a23=int(question[23].get('response'))
+a24=int(question[24].get('response'))
+a25=int(question[25].get('response'))
+a26=int(question[26].get('response'))
+a27=int(question[27].get('response'))
+a28=int(question[28].get('response'))
+a29=int(question[29].get('response'))
+a30=int(question[30].get('response'))
+a31=int(question[31].get('response'))
+a32=int(question[32].get('response'))
+a33=int(question[33].get('response'))
+a34=int(question[34].get('response'))
+a35=int(question[35].get('response'))
+a36=int(question[36].get('response'))
+a37=int(question[37].get('response'))
+a38=int(question[38].get('response'))
+a39=int(question[39].get('response'))
+a40=int(question[40].get('response'))
+a41=int(question[41].get('response'))
+a42=int(question[42].get('response'))
+a43=int(question[43].get('response'))
+a44=int(question[44].get('response'))
+a45=int(question[45].get('response'))
+a46=int(question[46].get('response'))
+a47=int(question[47].get('response'))
+a48=int(question[48].get('response'))
+a49=int(question[49].get('response'))
+a50=int(question[50].get('response'))
 
 #Calculating Big Five scores
 #Extroversion score    
@@ -134,11 +135,11 @@ O=8+a5-a10+a15-a20+a25-a30+a35+a40+a45+a50
 
 #Print results
 
-print("Extroversion score = ", E)
+print("\nExtroversion score = ", E)
 print("Agreeableness score = ", A)
 print("Conscientiousness score = ", C)
 print("Neuroticism score = ", N)
-print("Openness to experience score = ", O)
+print("Openness to experience score = ", O,"\n")
 
 #future plans:
 #if name = main
