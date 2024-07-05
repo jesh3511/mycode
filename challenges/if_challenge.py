@@ -59,12 +59,8 @@ print("For the following questions, answer on a scale from 1 to 5. \n1=Disagree\
 
 #display the question and register input
 for value in question:
-    #k=list(value.keys())[0]
-    #print("this is",k)
-    #v=list(value.get(k))
-    #print("this is",v)
-    #i=input(f"{k}.{v}")
-    i=input(value)
+    k=list(value.keys())[0]
+    i=input(f'{k}. {value.get(k)}')
     while int(i) <1 or int(i) > 5:
         i=input("\n====== Error:Please re-enter a number 1-5. ====== \n")
     value["response"]=i
@@ -146,6 +142,8 @@ print("Openness to experience score = ", O,"\n")
 #functions in alphabetical order
     #maybe put in seperate file and import
     #seperate code for input, results+graphs, export/import and netcode
+        #sep dict
+        #work on flask front end
     #library can be all code that does not need to run
         #ex: math for score calc and other methodology, dict
 #if statements for scores to categorize and summarize
