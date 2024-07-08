@@ -132,24 +132,29 @@ O=8+a5-a10+a15-a20+a25-a30+a35+a40+a45+a50
 
     
 #Print results to screen
-print("\nExtroversion score = ", E)
+print("")
+print("Extroversion score = ", E)
 print("Agreeableness score = ", A)
 print("Conscientiousness score = ", C)
 print("Neuroticism score = ", N)
-print("Openness to experience score = ", O,"\n")
+print("Openness to experience score = ", O)
+print("")
 
 #Print only variables to file 'output'
-with open("output.txt", "w") as outfile:
-    print(E, file=output.txt)
-    print(A, file=output.txt)
-    print(C, file=output.txt)
-    print(N, file=output.txt)
-    print(O, file=output.txt)
+with open("output.py", "w") as outfile:
+    print("#!/usr/bin/env python3", file=outfile)
+    print("results = [", file=outfile)
+    print("{E : ", E, "},", sep="", file=outfile)
+    print("{A : ", A, "},", sep="", file=outfile)
+    print("{C : ", C, "},", sep="", file=outfile)
+    print("{N : ", N, "},", sep="", file=outfile)
+    print("{O : ", O, "},", sep="", file=outfile)
+    print("]", file=outfile)
 
 
 #future plans:
 #if name = main
-#functions in alphabetical order
+#make error message repeat with additional invalid inputs
     #maybe put in seperate file and import
     #seperate code for input, results+graphs, export/import and netcode
         #sep dict
