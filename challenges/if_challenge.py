@@ -129,13 +129,23 @@ N=38-a4+a9-a14+a19-a24-a29-a34-a39-a44-a49
 #Openness to experience score
 O=8+a5-a10+a15-a20+a25-a30+a35+a40+a45+a50
 
-#Print results
 
+    
+#Print results to screen
 print("\nExtroversion score = ", E)
 print("Agreeableness score = ", A)
 print("Conscientiousness score = ", C)
 print("Neuroticism score = ", N)
 print("Openness to experience score = ", O,"\n")
+
+#Print only variables to file 'output'
+with open("output.txt", "w") as outfile:
+    print(E, file=output.txt)
+    print(A, file=output.txt)
+    print(C, file=output.txt)
+    print(N, file=output.txt)
+    print(O, file=output.txt)
+
 
 #future plans:
 #if name = main
@@ -153,3 +163,4 @@ print("Openness to experience score = ", O,"\n")
     #matplotlib - lab 62
 #output to files and do group data analysis
 #random generator for ID while being anonymous so results are unique but anyon
+#work with file objects
