@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 #question bank
 question = [
     {"I...   ":"(Enter 1 to continue)"},
@@ -118,19 +119,18 @@ a49=int(question[49].get('response'))
 a50=int(question[50].get('response'))
 
 #Calculating Big Five scores
-#Extroversion score (40 max)    
+#Extroversion score (40 max 0 min)    
 E=20+a1-a6+a11-a16+a21-a26+a31-a36+a41-a46
-#Agreeableness score (40 max)
+#Agreeableness score (40 max 0 min)
 A=14-a2+a7-a12+a17-a22+a27-a32+a37+a42+a47
-#Conscientiousness score (40 max)
+#Conscientiousness score (40 max 0 min)
 C=14+a3-a8+a13-a18+a23-a28+a33-a38+a43+a48
-#Neuroticism score (40 max)
+#Neuroticism score (40 max 0 min)
 N=38-a4+a9-a14+a19-a24-a29-a34-a39-a44-a49
-#Openness to experience score (40 max)
+#Openness to experience score (40 max 0 min)
 O=8+a5-a10+a15-a20+a25-a30+a35+a40+a45+a50
 
 
-    
 #Print results to screen
 print("")
 print("Extroversion score = ", E)
@@ -140,16 +140,80 @@ print("Neuroticism score = ", N)
 print("Openness to experience score = ", O)
 print("")
 
-#Print only variables to file 'output'
+
+#Print only variables to file 'output' as a list of dictionaries
 with open("output.py", "w") as outfile:
-    print("#!/usr/bin/env python3", file=outfile)
+    print("#!/usr/bin/env python3\n\n", file=outfile)
     print("results = [", file=outfile)
-    print("{E : ", E, "},", sep="", file=outfile)
-    print("{A : ", A, "},", sep="", file=outfile)
-    print("{C : ", C, "},", sep="", file=outfile)
-    print("{N : ", N, "},", sep="", file=outfile)
-    print("{O : ", O, "},", sep="", file=outfile)
+    print("{E : ", E/40, "},", sep="", file=outfile)
+    print("{A : ", A/40, "},", sep="", file=outfile)
+    print("{C : ", C/40, "},", sep="", file=outfile)
+    print("{N : ", N/40, "},", sep="", file=outfile)
+    print("{O : ", O/40, "},", sep="", file=outfile)
     print("]", file=outfile)
+
+
+#calculate percentage
+#Xx = calculated value out of a maximum score of 40
+#Xm = mean score for trait
+#Xs = std dev for trait
+#Xz = z score = difference from mean / std dev
+#Xp = percentile value = mean + (z score * std dev)
+
+
+Ex = E/40
+Em = .548
+Es= 0.15
+Ez = ((Ex-Em))/Es
+Ep = Em + (Ez*Es)
+Ax = A/40
+Am = .703
+As = .115
+Az = ((Ax-Am))/As
+Ap = Am + (Az*As)
+Cx = C/40
+Cm = 0.67
+Cs = .159
+Cz = ((Cx-Cm))/Cs
+Cp = Cm + (Cz*Cs)
+Nx = N/40
+Nm = .462
+Ns = .177
+Nz = ((Nx-Nm))/Ns
+Np = Nm + (Nz*Ns)
+Ox = O/40
+Om = .631
+Os = .122
+Oz = ((Ox-Om))/Os
+Op = Om + (Oz*Os)
+
+#Output percentiles as human readable
+
+def add_suffix(perc):
+    suffix = ""
+    if perc % 10 == 1 and Ep != 11:
+        suffix = "st"
+    elif perc % 10 == 2 and Ep != 12:
+        suffix = "nd"
+    elif perc % 10 == 3 and Ep != 13:
+        suffix = "rd"
+    else:
+        suffix = "th"
+    return str(perc) + suffix
+print(add_suffix(Ep))
+print("suffix experiment ^")
+
+print(f"Your Extroversion score is in the {Ep*100} percentile of the population.")
+print(f"Your Agreeableness score is in the {Ap*100} percentile of the population.")
+print(f"Your Conscientiousness score is in the {Cp*100} percentile of the population.")
+print(f"Your Neuroticism score is in the {Np*100} percentile of the population.")
+print(f"Your Openness to experience score is in the {Op*100} percentile of the population.")
+print("")
+
+
+
+
+
 
 
 #if name = main
