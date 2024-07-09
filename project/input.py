@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from ffm_func import zscore,perc,add_suffix
 
 
 #question bank
@@ -145,6 +146,7 @@ print("")
 with open("output.py", "w") as outfile:
     print("#!/usr/bin/env python3\n\n", file=outfile)
     print("results = [", file=outfile)
+    #can i turn all of this into a for loop??????
     print("{E : ", E/40, "},", sep="", file=outfile)
     print("{A : ", A/40, "},", sep="", file=outfile)
     print("{C : ", C/40, "},", sep="", file=outfile)
@@ -164,51 +166,37 @@ with open("output.py", "w") as outfile:
 Ex = E/40
 Em = .548
 Es= 0.15
-Ez = ((Ex-Em))/Es
-Ep = Em + (Ez*Es)
+Ez = zscore(Ex, Em, Es)
+Ep = perc(Em, Ez, Es)
 Ax = A/40
 Am = .703
 As = .115
-Az = ((Ax-Am))/As
-Ap = Am + (Az*As)
+Az = zscore(Ax, Am, As)
+Ap = perc(Am, Az, As)
 Cx = C/40
 Cm = 0.67
 Cs = .159
-Cz = ((Cx-Cm))/Cs
-Cp = Cm + (Cz*Cs)
+Cz = zscore(Cx, Cm, Cs)
+Cp = perc(Cm, Cz, Cs)
 Nx = N/40
 Nm = .462
 Ns = .177
-Nz = ((Nx-Nm))/Ns
-Np = Nm + (Nz*Ns)
+Nz = zscore(Nx, Nm, Ns)
+Np = perc(Nm, Nz, Ns)
 Ox = O/40
 Om = .631
 Os = .122
-Oz = ((Ox-Om))/Os
-Op = Om + (Oz*Os)
-
+Oz = zscore(Ox, Om, Os)
+Op = perc(Om, Oz, Os)
 #Output percentiles as human readable
 
-def add_suffix(perc):
-    suffix = ""
-    if perc % 10 == 1 and Ep != 11:
-        suffix = "st"
-    elif perc % 10 == 2 and Ep != 12:
-        suffix = "nd"
-    elif perc % 10 == 3 and Ep != 13:
-        suffix = "rd"
-    else:
-        suffix = "th"
-    return str(perc) + suffix
-    
-print(add_suffix(Ep))
-print("suffix experiment ^")
 
-print(f"Your Extroversion score is in the {Ep*100} percentile of the population.")
-print(f"Your Agreeableness score is in the {Ap*100} percentile of the population.")
-print(f"Your Conscientiousness score is in the {Cp*100} percentile of the population.")
-print(f"Your Neuroticism score is in the {Np*100} percentile of the population.")
-print(f"Your Openness to experience score is in the {Op*100} percentile of the population.")
+
+print(f"Your Extroversion score is in the {add_suffix(Ep)} percentile of the population.")
+print(f"Your Agreeableness score is in the {add_suffix(Ap)} percentile of the population.")
+print(f"Your Conscientiousness score is in the {add_suffix(Cp)} percentile of the population.")
+print(f"Your Neuroticism score is in the {add_suffix(Np)} percentile of the population.")
+print(f"Your Openness to experience score is in the {add_suffix(Op)} percentile of the population.")
 print("")
 
 
