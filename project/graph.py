@@ -1,56 +1,47 @@
-#!/usr/bin/python3
-
-
-import csv
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import output
 
 
+#import results from 'output.py'
+ext = (output.results[0]['ext'])
+agr = (output.results[1]['agr'])
+con = (output.results[2]['con'])
+neu = (output.results[3]['neu'])
+ope = (output.results[4]['ope'])
+#uncomment below to test that file is importing correctly - should work as integers
+print(ext,agr,con,neu,ope)
 
-def parsecsvdata():
-    """returns a list. [0] is LAN and [1] WAN data"""
-    summary = [] # list that will contain [(LAN), (WAN)]
-
-    # open csv data
-    with open("/home/student/mycode/mycode/graphing/2018summary.csv",\
-     "r") as downtime:
-        # parse csv data with csv.reader
-        downdata = csv.reader(downtime, delimiter=",")
-        for row in downdata:
-            rowdat = (int(row[0]), int(row[1]), int(row[2]), int(row[3]))
-            summary.append(rowdat) # add dict to list
-    return summary
 
 def main():
-    N = 4
-    ## grab our data
-    summary = parsecsvdata() # grab our data
-    localnetMeans = summary[0] # LAN data
-    wanMeans = summary[1] # WAN data
-
-    ind = np.arange(N)    # the x locations for the groups
-    # the width of the bars: can also be len(x) sequence
-    width = 0.35
+    N = 5
+    user = (ext, agr, con, neu, ope) #LAN length of outage (mins)
+    mean = (.548, .703, 0.67, .462, .631) #WAN length of outage (min)
+    width = .35
+    inu = np.arange(N)    # the x locations for the groups
+    inm = [x + width for x in inu]
+  
+  
 
     # describe where to display p1
-    p1 = plt.bar(ind, localnetMeans, width)
+    plt.figure().set_figwidth(10)
+    p1 = plt.bar(inm, mean, width, label="Study")
+    p2 = plt.bar(inu, user, width, label="You")
     # stack p2 on top of p1
-    p2 = plt.bar(ind, wanMeans, width, bottom=localnetMeans)
+
+    #plt.figure(figsize=(7,4))
 
     # Describe the table metadata
-    plt.ylabel("Length of Outage (mins)")
-    plt.title("2018 Network Summary")
-    plt.xticks(ind, ("Q1", "Q2", "Q3", "Q4"))
-    plt.yticks(np.arange(0, 81, 10))
-    plt.legend((p1[0], p2[0]), ("LAN", "WAN"))
+    plt.ylabel("Trait Score")
+    plt.title("Comparison to study averages")
+    plt.xticks(inu+width, ("Extroversion", "Agreeableness", "Conscientiousness", "Neuroticism", "Openness"))
+    plt.yticks(np.arange(0, 1.1, .1)) #.1 = first tick, 1= whole scale
+    plt.legend((p1[0], p2[0]), ("Study", "You"))
 
-    # SAVE the graph locally
-    plt.savefig("/home/student/mycode/mycode/graphing/2018summaryv2.png")
-    # Save to "~/static"
-    plt.savefig("/home/student/static/2018summaryv2.png")       
-    print("Graph created.")
+    plt.savefig("/home/jesh/TLG python/mycode/project/ffm.pdf")
+    
 
 if __name__ == "__main__":
     main()

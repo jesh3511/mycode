@@ -1,8 +1,3 @@
-#E = 34
-#Ex = E/40
-#Em = .548
-#Es= 0.15
-
 #Z score 
 #   (value - mean) / std dev
 def zscore(val, mean, std): 
@@ -27,17 +22,4 @@ def add_suffix(res):
         suffix = "rd"
     else:
         suffix = "th"
-    #res2 = str('%.3g' % res)
-    #return res2 + suffix
     return str(('%.4f' % res).rstrip('0').rstrip('.')) +suffix
-
-    
-#Ez = zscore(Ex, Em, Es)
-#Ep = perc(Em, Ez, Es)
-#print(add_suffix(Ep))
-
-#Ez = zscore(Ex, Em, Es)
-#print(Ez)
-
-#Ep = (perc(Em, Ez, Es))*100
-#print(Ep)
