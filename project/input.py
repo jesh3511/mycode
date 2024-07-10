@@ -221,3 +221,6 @@ print("")
 #output to files and do group data analysis
 #random generator for ID while being anonymous so results are unique but anyon
 #work with file objects
+
+#to create list from results
+#mylist.append []  to empty

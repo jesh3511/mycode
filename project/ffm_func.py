@@ -1,4 +1,4 @@
-#E = 20
+#E = 34
 #Ex = E/40
 #Em = .548
 #Es= 0.15
@@ -12,7 +12,7 @@ def zscore(val, mean, std):
 #Percentile value 
 #   mean + (z score * std dev)
 def perc(mean, zscore, std):  
-    p = (mean+(zscore*std))
+    p = (mean+(zscore*std))*100
     return p
 
 #Add the correct suffix in the result for percentile scores
@@ -27,11 +27,14 @@ def add_suffix(res):
         suffix = "rd"
     else:
         suffix = "th"
-    res2 = str('%.3g' % res)
+    #res2 = str('%.3g' % res)
     #return res2 + suffix
-    return (str(res))+suffix
+    return str(('%.4f' % res).rstrip('0').rstrip('.')) +suffix
 
-print(add_suffix(99))
+    
+#Ez = zscore(Ex, Em, Es)
+#Ep = perc(Em, Ez, Es)
+#print(add_suffix(Ep))
 
 #Ez = zscore(Ex, Em, Es)
 #print(Ez)
