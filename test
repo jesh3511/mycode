@@ -1,0 +1,8 @@
+- name: Print several lines of text
+  vars:
+    msg: |
+         This is the first line.
+         This is the second line with a variable like {{ inventory_hostname }}.
+         And here could be more...
+  debug:
+    msg: "{{ msg.split('\n') }}"
