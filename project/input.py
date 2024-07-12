@@ -167,7 +167,7 @@ def main():
 
     Ex = E/40
     Em = .548
-    Es= 0.15
+    Es = 0.15
     Ez = zscore(Ex, Em, Es)
     Ep = perc(Em, Ez, Es)
     Ax = A/40
@@ -226,3 +226,4 @@ if __name__ == '__main__':
 
 #to create list from results
 #mylist.append []  to empty
+#data encapsulation - write the participant as an object

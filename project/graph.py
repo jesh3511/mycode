@@ -12,7 +12,7 @@ con = (output.results[2]['con'])
 neu = (output.results[3]['neu'])
 ope = (output.results[4]['ope'])
 #uncomment below to test that file is importing correctly - should work as integers
-print(ext,agr,con,neu,ope)
+#print(ext,agr,con,neu,ope)
 
 
 def main():

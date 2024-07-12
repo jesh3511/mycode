@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+
+<html> 
+<head> 
+	<title>Five Factor Model Quiz</title> 
+</head> 
+<body> 
+
+
+<form action="/submit_answers" method="post">
+	<ol> 
+	{%for i in range(0, len)%} 
+
+		<li>
+			{{question_list[i]}}
+			<select name="answer{{ i+1 }}">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+		</li> 
+	{%endfor%} 
+	</ol> 
+
+	<input type="submit" value="Submit">
+</form>
+
+
+</body> 
+</html> 
